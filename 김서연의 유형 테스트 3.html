@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:site_name" content="김서연의 유형 테스트">
+    <meta property="og:title" content="김서연의 유형 테스트">
+    <meta property="og:image" content="https://postfiles.pstatic.net/MjAyNDExMDFfMTkg/MDAxNzMwNDY1MTI3MjQ5.8bqq7WLPD4yPE--eRs21gvz88dfYqgEX0K0sj5yw6fwg.GelFfMQr1RnhuXNY22rrn-lN4ACBrjyyPNy6qiCUo3wg.JPEG/Screenshot%EF%BC%BF20241101%EF%BC%BF214450%EF%BC%BFSamsung_Notes.jpg?type=w3840">
+    <meta property="og:url" content="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC">
+    <title>김서연의 유형 테스트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .question {
+            margin: 15px 0;
+        }
+        .result {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        button {
+            display: block;
+            margin: auto;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="surveyContainer">
+        <h1>김서연의 유형 테스트</h1>
+        <form id="survey">
+            <div class="question">
+                <label>사람들과 어울릴 때:</label><br>
+                <input type="radio" name="social" value="1" required> 사람들과 어울리는 게 좋다<br>
+                <input type="radio" name="social" value="0"> 혼자 있는 게 편하다
+            </div>
+            <div class="question">
+                <label>문제를 해결할 때:</label><br>
+                <input type="radio" name="problem" value="1" required> 분석적이고 계획을 세운다<br>
+                <input type="radio" name="problem" value="0"> 즉흥적으로 해결한다
+            </div>
+            <div class="question">
+                <label>새로운 사람을 만날 때:</label><br>
+                <input type="radio" name="new_people" value="1" required> 기대된다<br>
+                <input type="radio" name="new_people" value="0"> 긴장된다
+            </div>
+            <button type="button" onclick="calculateResult()"> 제출</button>
+        </form>
+    </div>
+
+    <div class="container" id="resultContainer" style="display: none;">
+        <h1>결과</h1>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateResult() {
+            const form = document.getElementById('survey');
+            const socialScore = parseInt(form.social.value);
+            const problemScore = parseInt(form.problem.value);
+            const newPeopleScore = parseInt(form.new_people.value);
+            const totalScore = socialScore + problemScore + newPeopleScore;
+
+            let personality = '';
+            if (totalScore === 3) {
+                personality = '외향적이고 적극적인 성격입니다.';
+            } else if (totalScore === 2) {
+                personality = '중간적인 성격입니다.';
+            } else if (totalScore === 1) {
+                personality = '내향적이고 조용한 성격입니다.';
+            } else {
+                personality = '응답이 없습니다.';
+            }
+
+            document.getElementById('surveyContainer').style.display = 'none';
+            document.getElementById('resultContainer').style.display = 'block';
+            document.getElementById('result').innerText = `결과: ${personality}`;
+        }
+    </script>
+
+    <div class="container">
+        <h2>성격 테스트 이미지</h2>
+        <img src="https://postfiles.pstatic.net/MjAyNDExMDFfMTc1/MDAxNzMwNDcyMTk3NDMy.iXUcF0UTFfHKVQQiGgDVvko6DVVKO2SmofUIv9T0wDIg.5u8FUOmlJBV5DdF5i2oNufqdZxRJlb4KgFbK5rGWj-Yg.JPEG/Screenshot%EF%BC%BF20241101%EF%BC%BF214450%EF%BC%BFSamsung_Notes.jpg?type=w3840" alt="성격 테스트 이미지">
+    </div>
+</body>
+</html>
